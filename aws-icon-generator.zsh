@@ -12,7 +12,8 @@
 # --------------------------------------------------------
 # Change this if you want
 # --------------------------------------------------------
-VERSION="17.1.19"
+RELEASE_ID="Oct-17"
+VERSION="17.10.18"
 SIZE="128" # You should set 128 for Slack emojis!
 # --------------------------------------------------------
 
@@ -20,9 +21,9 @@ APP=aws-icon-generator
 TMP="${APP}/${APP}-${VERSION}/${SIZE}x${SIZE}"
 CACHE="${APP}/cache/${VERSION}"
 NAME="AWS_Simple_Icons_EPS-SVG_v${VERSION}"
-REAL_DIR="$NAME"
+REAL_DIR="PNG, SVG, EPS"
 ZIPBALL="${NAME}.zip"
-URL="https://media.amazonwebservices.com/AWS-Design/Arch-Center/${VERSION}_Update/$ZIPBALL"
+URL="https://s3-us-west-2.amazonaws.com/awswebanddesign/Architecture+Icons/AWS-Arch-Icon-Sets_${RELEASE_ID}/PNG%2C+SVG%2C+EPS_${VERSION}.zip"
 
 
 # mkdir -p "$TMP"
@@ -40,6 +41,9 @@ if [[ ! -d "$ORIGINAL" ]]; then
 
   echo "Deleting __MACOSX"
   rm -rf "$ORIGINAL/__MACOSX"
+
+  echo "Deleting old compat files"
+  rm -rf $ORIGINAL/$REAL_DIR/*Compatible\ Files*
 
   echo "Deleting GRAYSCALE"
   rm -rf "$ORIGINAL/$REAL_DIR/GRAYSCALE"
@@ -96,7 +100,7 @@ for eps in "${epss[@]}"; do
   done
 
   # 0.1) Acronyms, special
-  id=$(echo "$id"|sed -e 's/^SDKs/sdk-/'|sed -e 's/AWSSTS/-sts-/g')
+  id=$(echo "$id"|sed -e 's/^SDKs/sdk-/'|sed -e 's/AWSSTS/-sts-/g'|sed -e 's/ElasticLoadBalancing/-elb-/g')
 
   # 0.2) Trailing version number
   id=$(echo "$id"|sed -e 's/[0-9]\+.[0-9]\+$/-&/')
