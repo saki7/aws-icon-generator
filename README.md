@@ -56,8 +56,8 @@ Note that Slack requires `SIZE=128` for custom emojis!
 
 ## About
 
-- Author: Nana Sakisaka (@saki7)
+- Author: Nana Sakisaka (@saki7), hakemimi (@hakemimi)
 - License for this script: MIT
 - License for original icons: All rights reserved (Amazon)
-- Original code: https://github.com/saki7/aws-icon-generator
+- Original code: https://github.com/SETNAHQ/aws-icon-generator
 
